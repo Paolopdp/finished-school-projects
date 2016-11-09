@@ -1,0 +1,8 @@
+#!/bin/bash	
+function bisestile {
+	if test $((anno % 4)) = 0 && test $((anno % 100)) != 0 || test $((anno % 400)) = 0  ; then 
+		abisestile=0
+	else 
+		abisestile=1
+	fi
+	}

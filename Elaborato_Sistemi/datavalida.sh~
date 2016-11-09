@@ -1,0 +1,30 @@
+#!/bin/bash
+#Funzione per verificare la validità della data
+	function datavalida {
+		echo inserisci la data AAAAMMGG
+		echo ---------------------------------------------------------
+		read data;
+		echo ---------------------------------------------------------
+		lenght=${#data} 
+#Controllo che la data inserita sia di 8 bit
+		if test $lenght != 8 ; then
+			echo errore! hai sbagliato ad inserire la data
+#Reinsierisco la data
+			datavalida
+        else
+#Assegno ad anno,mese e giorno i loro valori
+		    anno=$((data/10000))
+		    temp=$((data%10000))
+		    mese=$((temp/100))
+		    if test ${#mese} = 1 ; then
+			    mese=0$mese
+		    fi
+		    giorno=$((temp%100))
+		    if test ${#giorno} = 1 ; then
+			    giorno=0$giorno
+		    fi
+		    echo $anno
+#Richiamo la funzione per verificare se data,mese e giorno sono #corretti	
+		    datacorretta
+        fi
+	}

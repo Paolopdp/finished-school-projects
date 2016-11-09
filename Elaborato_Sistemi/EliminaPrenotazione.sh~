@@ -1,0 +1,21 @@
+#!/bin/bash
+#Funzione che viene richiamata dopo che premo 2 nel menu
+	function EliminaPrenotazione {
+		echo ---------------------------------------------------------
+		echo Hai selezionato la funzione Elimina Prenotazione
+		echo ---------------------------------------------------------
+#Richiedo aula,data ed ora verificando che siano corrette
+		inserireaula
+		datavalida
+		oravalida
+#Se la prenotazione è presente nel file txt, la elimino
+		if grep -i $aula";"$anno$mese$giorno";"$ora aula.txt; then
+			echo La prenotazione è presente
+			sed -i /$aula";"$anno$mese$giorno";"$ora/d aula.txt
+			echo Prenotazione eliminata	
+#Altrimenti restituisco un messaggio di errore	
+		else
+			echo  Errore, non esiste questa prenotazione
+		fi
+	Menu
+	}

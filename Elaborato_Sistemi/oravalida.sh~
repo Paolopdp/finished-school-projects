@@ -1,0 +1,17 @@
+#!/bin/bash
+#Controllo se l'ora è tra 8 e 17	
+	function oravalida {
+		echo Inserisci l ora 
+		echo ---------------------------------------------------------
+		read ora
+		echo ---------------------------------------------------------
+		case ${ora#[-+]} in
+#Controllo che l'utente inserisca un'ora valida, che sia un numero intero tra 8 e 17
+		  *[0-9]* ) if test $ora -lt 8 || test $ora -gt 17 ; then
+				echo L ora è valida tra le 8 e le 17
+				oravalida
+				fi;;	 
+	  	  * )	 echo L^ora va scritta come numero intero, tra 8 e 17
+			oravalida;;
+		esac	
+	}

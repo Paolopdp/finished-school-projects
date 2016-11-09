@@ -1,0 +1,7 @@
+#!/bin/bash
+function nomeutente {	
+		echo Inserisci il nome utente
+		echo ---------------------------------------------------------
+		read nome
+		echo ---------------------------------------------------------
+	}

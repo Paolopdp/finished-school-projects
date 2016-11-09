@@ -1,0 +1,26 @@
+#!/bin/bash	
+#Funzione che viene richiamata dopo che premo 3 nel menu
+	function MostraAula {
+		echo ---------------------------------------------------------
+		echo Hai selezionato la funzione Mostra aula
+		echo ---------------------------------------------------------
+		echo Inserisci il nome dell aula di cui vuoi avere informazioni
+		read aula
+		echo ---------------------------------------------------------	
+		if test ${#giorno} -lt 1; then 
+		echo Non hai inserito nulla.
+		MostraAula	
+		else	
+#${aula^^} Permette di ottenere in output una stringa maiuscola 		
+		echo PRENOTAZIONI AULA ${aula^^}
+		echo Giorno Ora Utente
+#Non è case sensitive, prima rimuovo dal file txt l'aula, poi sostituisco i ";" con degli spazi, infine ordino per il parametro data e ora
+		if  grep -i $aula";" aula.txt | sed -e "s/$aula//i"|sed -e 's/;/ /g' | sort  -k2n,3n ;then
+			echo
+		else
+			echo Non ci sono prenotazioni per l aula inserita
+		fi
+		fi
+		Menu
+	}
+

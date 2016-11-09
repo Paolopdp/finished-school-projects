@@ -1,0 +1,30 @@
+#!/bin/bash	
+#Funzione che viene richiamata dopo che premo 4 nel menu
+	function PrenotazioniPerAula {
+		echo ---------------------------------------------------------
+		echo Hai selezionato la funzione Prenotazioni per aula
+		echo ---------------------------------------------------------
+#Calcolo quante aule ci sono in totale
+		numaule=$(cut -d';' -f1 aula.txt | sort -f -u | wc -l)
+#Ciclo while
+		if test $numaule = 1; then
+		i=0
+		else
+		i=1;
+		fi
+			while test $i -lt $numaule; do
+			i=$((i+1))
+#estraggo il nome dell'aula,prendendo ciascuna riga una alla volta
+			nomeaula=$(cut -d';' -f1 aula.txt | sort -f -u | sed "${i}q;d")
+#Calcolo quante volte si ripetono le prenotazioni per ciascuna aula
+			numprenotazioni=$(grep -i -c "$nomeaula;" aula.txt)
+#File txt di appoggio per ordinare le aule		
+			echo ${nomeaula^^}":" $numprenotazioni >> sort.txt	
+		
+#Ordino, stampo ed elimino il file sort
+			sort -t":" -k2n,2n sort.txt 
+			rm sort.txt
+			done
+
+		Menu
+	}

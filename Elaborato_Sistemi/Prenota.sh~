@@ -1,0 +1,22 @@
+#!/bin/bash
+function Prenota {
+		echo ---------------------------------------------------------
+		echo Hai selezionato la funzione Prenota
+		echo ---------------------------------------------------------
+#Lancio le funzioni per inserire aula,data,ora e nome.
+		inserireaula
+		datavalida
+		oravalida
+		nomeutente
+#Verifico se la prenotazione può essere effettuata
+		if grep -i  $aula";"$anno$mese$giorno";"$ora aula.txt; then
+		echo Aula Occupata	
+#Se ho un'aula libera procedo		
+		else
+		echo  Aula libera ed è stata prenotata
+#Scrivo sul file aula.txt le informazioni della prenotazione
+		echo $aula";"$anno$mese$giorno";"$ora";"$nome >> aula.txt 
+	fi
+	Menu	
+	}
+

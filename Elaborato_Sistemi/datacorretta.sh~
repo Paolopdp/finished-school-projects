@@ -1,0 +1,73 @@
+#!/bin/bash	
+	function datacorretta {
+#Verifico che l'anno sia almeno quello corrente
+	if test $anno -lt 2016 ; then
+		echo Anno non valido, inserire un anno successivo al 2015
+		echo ---------------------------------------------------------
+		read anno
+		echo ---------------------------------------------------------
+		datacorretta
+    else
+
+#Verifico che il mese esista	
+	    if test $mese -lt 1 || test $mese -gt 12 ; then
+		    echo Mese non valido, inserire un mese corretto
+		    echo ---------------------------------------------------------
+		    read mese
+		    echo ---------------------------------------------------------
+		    datacorretta
+	    else
+#Verifico che il giorno sia almeno 1
+	        if test $giorno -lt 1 ; then
+		        echo ---------------------------------------------------------
+		        echo Giorno non valido. Inserire giorno corretto
+		        echo ---------------------------------------------------------
+		        read giorno
+		        datacorretta
+	        else
+#Verifico che i giorni siano corretti, in base al mese	
+	case $mese in
+#Aprile,Giugno,Settembre e Novembre hanno 30 giorni
+	04|06|09|11) if test $giorno -gt 30; then
+			        echo Giorno non valido! Aprile,Giugno,Settembre e Novembre hanno 30 giorni. Inserire giorno corretto
+			        echo ---------------------------------------------------------
+			        read giorno
+			        echo ---------------------------------------------------------
+			        datacorretta
+                    fi;;
+#Febbraio ha 28 giorni se l'anno non è bisestile, altrimenti 29. Richiamo la funzione bisestile e verifico se è un anno bisestile
+	    02) bisestile
+	     if test $abisestile = 0 ; then
+		    if test $giorno -gt 29; then
+			    echo Giorno non valido! In questo anno Febbraio può avere al massimo 29 giorni
+			    echo Inserire giorno corretto
+			    echo ---------------------------------------------------------
+			    read giorno
+			    echo ---------------------------------------------------------
+			    datacorretta
+		    fi
+	    else 
+		    if test $giorno -gt 28; then
+			    echo Giorno non valido! In questo anno Febbraio può avere al massimo 28 giorni
+			    echo ---------------------------------------------------------
+			    read giorno
+			    echo ---------------------------------------------------------
+			    datacorretta		
+        	    fi
+                fi;;
+#Gennaio,Marzo,Maggio,Luglio,Agosto,Ottobre,Dicembre hanno 31 giorni
+	    *) if test $giorno -gt 31; then
+		    echo Giorno non valido Gennaio,Marzo,Maggio,Luglio,Agosto,Ottobre,Dicembre hanno 
+		    echo 31 giorni. Inserire giorno corretto
+		    echo ---------------------------------------------------------
+		    read giorno
+		    echo ---------------------------------------------------------
+		    datacorretta
+	    fi;;
+	
+	esac
+	fi
+    fi
+    fi
+		
+	}

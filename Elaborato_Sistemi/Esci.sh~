@@ -1,0 +1,8 @@
+#!/bin/bash	
+Funzione che viene richiamata dopo che premo 5 nel menu
+	function Esci {
+		echo -----------------------------------------------------------------------------
+		echo Script terminato. Elenco disponibile nel file aula.txt
+		echo -----------------------------------------------------------------------------
+		exit
+	}

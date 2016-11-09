@@ -1,0 +1,14 @@
+
+source Menu.sh
+source Prenota.sh
+source EliminaPrenotazione.sh
+source MostraAula.sh
+source PrenotazioniPerAula.sh
+source Esci.sh
+source bisestile.sh
+source datacorretta.sh
+source datavalida.sh
+source inserireaula.sh
+source nomeutente.sh
+source oravalida.sh
+Menu

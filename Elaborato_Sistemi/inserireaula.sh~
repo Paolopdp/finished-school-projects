@@ -1,0 +1,16 @@
+#!/bin/bash
+function inserireaula {
+		echo Inserisci un^aula, ricorda che le aule non possono essere
+		echo rappresentate da semplici numeri interi
+		echo Esempi aule: Tessari,2.1,A,B corretto! 1,2,12 non corretti!
+		echo ---------------------------------------------------------		
+		read aula
+		echo ---------------------------------------------------------
+		case ${aula#[-+]} in
+		  *[!0-9]* ) echo Hai inserito l^aula ${aula^^} ;;
+	  	  * ) echo Hai inserito un numero intero! ;
+			echo ---------------------------------------------------------
+		  	inserireaula;;
+esac
+
+	}

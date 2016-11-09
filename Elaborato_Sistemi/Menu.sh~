@@ -1,0 +1,30 @@
+#!/bin/bash
+	source Prenota.sh
+	source EliminaPrenotazione.sh
+	source MostraAula.sh
+	source PrenotazioniPerAula.sh
+	source Esci.sh
+	function Menu {
+	echo -----------------------------------------------------------------------------
+	echo Questo è il menu. Inserisci in input il numero per effettuare una operazione
+	echo -----------------------------------------------------------------------------
+	echo 1. Prenota
+	echo 2. Elimina prenotazione
+	echo 3. Mostra aula
+	echo 4. Prenotazioni per aula
+	echo 5. Esci
+# Leggo l'input da tastiera
+	read scelta
+# In base all'input invoco una funzione 
+	case $scelta in
+		1) Prenota;;
+		2) EliminaPrenotazione;;
+		3) MostraAula;;
+		4) PrenotazioniPerAula;;
+		5) Esci;;
+#Se c'è un errore, richiamo la funzione, finchè il comando non è valido
+		*) echo errore inserisci un comando valido;
+		Menu;;
+	esac
+	}
+
