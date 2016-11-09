@@ -1,3 +1,3 @@
-# hello-world
-Current Projects ideas, unfinished personal/School projects
+# finished-projects
+Finished School projects
 There i'll store all my finished projects
