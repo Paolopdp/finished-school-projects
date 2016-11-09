@@ -1,0 +1,122 @@
+\hypertarget{main_8c}{\section{Riferimenti per il file main.\-c}
+\label{main_8c}\index{main.\-c@{main.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$fcntl.\-h$>$}\\*
+{\ttfamily \#include $<$unistd.\-h$>$}\\*
+{\ttfamily \#include $<$sys/types.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$sys/wait.\-h$>$}\\*
+{\ttfamily \#include $<$sys/shm.\-h$>$}\\*
+{\ttfamily \#include $<$sys/sem.\-h$>$}\\*
+{\ttfamily \#include $<$sys/ipc.\-h$>$}\\*
+Grafo delle dipendenze di inclusione per main.\-c\-:
+\subsection*{Definizioni}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{main_8c_a70ed59adcb4159ac551058053e649640}{S\-I\-Z\-E}~512
+\end{DoxyCompactItemize}
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{main_8c_ab6a3b7debfa2a0f5d16299632ed044ff}{op\-\_\-to\-\_\-int} (char c)
+\item 
+char \hyperlink{main_8c_a7cdd4e2059d73d7df243c8f7bcceaf2b}{int\-\_\-to\-\_\-op} (int c)
+\item 
+void \hyperlink{main_8c_a603c63ebd6b21266e6abc8cf80391dd0}{calcola\-\_\-riga} (int k, int numero\-\_\-righe, int num\-\_\-proc, float $\ast$memoria)
+\item 
+void \hyperlink{main_8c_a09f36b3b4ebe53df0c8407ce5be95b71}{stampa\-\_\-mem} (int numero\-\_\-righe, float $\ast$memoria)
+\item 
+int \hyperlink{main_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentazione delle definizioni}
+\hypertarget{main_8c_a70ed59adcb4159ac551058053e649640}{\index{main.\-c@{main.\-c}!S\-I\-Z\-E@{S\-I\-Z\-E}}
+\index{S\-I\-Z\-E@{S\-I\-Z\-E}!main.c@{main.\-c}}
+\subsubsection[{S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-I\-Z\-E~512}}\label{main_8c_a70ed59adcb4159ac551058053e649640}
+
+
+\subsection{Documentazione delle funzioni}
+\hypertarget{main_8c_a603c63ebd6b21266e6abc8cf80391dd0}{\index{main.\-c@{main.\-c}!calcola\-\_\-riga@{calcola\-\_\-riga}}
+\index{calcola\-\_\-riga@{calcola\-\_\-riga}!main.c@{main.\-c}}
+\subsubsection[{calcola\-\_\-riga}]{\setlength{\rightskip}{0pt plus 5cm}void calcola\-\_\-riga (
+\begin{DoxyParamCaption}
+\item[{int}]{k, }
+\item[{int}]{numero\-\_\-righe, }
+\item[{int}]{num\-\_\-proc, }
+\item[{float $\ast$}]{memoria}
+\end{DoxyParamCaption}
+)}}\label{main_8c_a603c63ebd6b21266e6abc8cf80391dd0}
+calcola\-\_\-riga\-: esegue il calcolo su una riga e lo salva in memoria condivisa 
+\begin{DoxyParams}{Parametri}
+{\em k} & numero del processo che svolgerà l'operazione \\
+\hline
+{\em numero\-\_\-righe} & numero totale delle righe di operazioni \\
+\hline
+{\em num\-\_\-proc} & numero totale dei processi \\
+\hline
+{\em memoria} & puntatore a float della porzione di memoria che contiene i dati da elaborare \\
+\hline
+\end{DoxyParams}
+\hypertarget{main_8c_a7cdd4e2059d73d7df243c8f7bcceaf2b}{\index{main.\-c@{main.\-c}!int\-\_\-to\-\_\-op@{int\-\_\-to\-\_\-op}}
+\index{int\-\_\-to\-\_\-op@{int\-\_\-to\-\_\-op}!main.c@{main.\-c}}
+\subsubsection[{int\-\_\-to\-\_\-op}]{\setlength{\rightskip}{0pt plus 5cm}char int\-\_\-to\-\_\-op (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)}}\label{main_8c_a7cdd4e2059d73d7df243c8f7bcceaf2b}
+int\-\_\-to\-\_\-op\-: metodo che converte il numero del segno (int) nel carattere del segno (char) 
+\begin{DoxyParams}{Parametri}
+{\em a} & numero corrispondente al segno di operazione \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+il carattere del segno identificato dal numero 
+\end{DoxyReturn}
+\hypertarget{main_8c_a3c04138a5bfe5d72780bb7e82a18e627}{\index{main.\-c@{main.\-c}!main@{main}}
+\index{main@{main}!main.c@{main.\-c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}}\label{main_8c_a3c04138a5bfe5d72780bb7e82a18e627}
+main\-: legge da file le operazioni, le esegue e salva i risultati ottenuti in un file. In questo elaborato si utilizzano processi figli, memoria condivisa e semafori. 
+\begin{DoxyParams}{Parametri}
+{\em argc} & numero di argomenti \\
+\hline
+{\em argv} & array di stringhe passate da linea di comando \\
+\hline
+\end{DoxyParams}
+\hypertarget{main_8c_ab6a3b7debfa2a0f5d16299632ed044ff}{\index{main.\-c@{main.\-c}!op\-\_\-to\-\_\-int@{op\-\_\-to\-\_\-int}}
+\index{op\-\_\-to\-\_\-int@{op\-\_\-to\-\_\-int}!main.c@{main.\-c}}
+\subsubsection[{op\-\_\-to\-\_\-int}]{\setlength{\rightskip}{0pt plus 5cm}int op\-\_\-to\-\_\-int (
+\begin{DoxyParamCaption}
+\item[{char}]{c}
+\end{DoxyParamCaption}
+)}}\label{main_8c_ab6a3b7debfa2a0f5d16299632ed044ff}
+op\-\_\-to\-\_\-int\-: converte il carattere del segno (char) in numero (int) compreso tra 1 e 4 
+\begin{DoxyParams}{Parametri}
+{\em c} & Il carattere corrispondente al segno di operazione \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Il numero assegnato al segno di operazione 
+\end{DoxyReturn}
+\hypertarget{main_8c_a09f36b3b4ebe53df0c8407ce5be95b71}{\index{main.\-c@{main.\-c}!stampa\-\_\-mem@{stampa\-\_\-mem}}
+\index{stampa\-\_\-mem@{stampa\-\_\-mem}!main.c@{main.\-c}}
+\subsubsection[{stampa\-\_\-mem}]{\setlength{\rightskip}{0pt plus 5cm}void stampa\-\_\-mem (
+\begin{DoxyParamCaption}
+\item[{int}]{numero\-\_\-righe, }
+\item[{float $\ast$}]{memoria}
+\end{DoxyParamCaption}
+)}}\label{main_8c_a09f36b3b4ebe53df0c8407ce5be95b71}
+stampa\-\_\-mem\-: stampa a video i valori all'interno della memoria condivisa 
+\begin{DoxyParams}{Parametri}
+{\em numero\-\_\-righe} & numero totale delle righe di operazioni \\
+\hline
+{\em memoria} & puntatore a float all'inizio della memoria condivisa \\
+\hline
+\end{DoxyParams}
