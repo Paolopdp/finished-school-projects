@@ -1,0 +1,80 @@
+.model controllore
+.inputs INIT RESET SA0 SA1
+.outputs SOGLIA1 SOGLIA2 START
+.latch    SOGLIA1 LatchOut_v4   0
+.latch    [177] LatchOut_v5   0
+.latch    [178] LatchOut_v6   1
+.start_kiss
+.i 4
+.o 3
+.p 26
+.s 5
+.r ON
+0--- OFF OFF --0
+1--- OFF ON 000
+0--- ON OFF --0
+1001 ON SO 011
+1010 ON IS 101
+1011 ON OS 111
+1-00 ON ON 000
+11-- ON ON 000
+1-00 SO ON 000
+11-- SO ON 000
+1010 SO IS 100
+1001 SO SO 011
+1011 SO OS 110
+0--- SO OFF --0
+1-00 IS ON 000
+11-- IS ON 000
+1010 IS IS 101
+1001 IS SO 010
+1011 IS OS 110
+0--- IS OFF --0
+11-- OS ON 000
+1-00 OS ON 000
+1010 OS IS 100
+1001 OS SO 010
+1011 OS OS 111
+0--- OS OFF --0
+.end_kiss
+.latch_order LatchOut_v4 LatchOut_v5 LatchOut_v6
+.code OFF 011
+.code ON 001
+.code SO 000
+.code IS 101
+.code OS 100
+.names INIT [177]
+0 1
+.names INIT SOGLIA2 [178]
+0- 1
+-0 1
+.names INIT RESET SA0 LatchOut_v5 SOGLIA1
+1010 1
+.names RESET SA1 LatchOut_v5 SOGLIA2
+010 1
+.names LatchOut_v4 LatchOut_v6 [178] SOGLIA1 SOGLIA2 START
+01-1- 1
+0-00- 1
+-1-10 1
+1001- 1
+.exdc 
+.inputs INIT RESET SA0 SA1 LatchOut_v4 LatchOut_v5 LatchOut_v6
+.outputs [177] [178] SOGLIA1 SOGLIA2 START
+.names LatchOut_v4 LatchOut_v5 LatchOut_v6 [177]
+11- 1
+-10 1
+.names LatchOut_v4 LatchOut_v5 LatchOut_v6 [178]
+11- 1
+-10 1
+.names INIT LatchOut_v4 LatchOut_v5 LatchOut_v6 SOGLIA1
+0--- 1
+-11- 1
+--10 1
+.names INIT LatchOut_v4 LatchOut_v5 LatchOut_v6 SOGLIA2
+0--- 1
+-11- 1
+--10 1
+.names LatchOut_v4 LatchOut_v5 LatchOut_v6 START
+11- 1
+-10 1
+.end

@@ -1,0 +1,13 @@
+.model zero8
+.outputs O7 O6 O5 O4 O3 O2 O1 O0
+.subckt zero O=O7
+.subckt zero O=O6
+.subckt zero O=O5
+.subckt zero O=O4
+.subckt zero O=O3
+.subckt zero O=O2
+.subckt zero O=O1
+.subckt zero O=O0
+
+.search zero.blif
+.end
