@@ -1,0 +1,60 @@
+.model datapath
+.inputs START BPM7 BPM6 BPM5 BPM4 BPM3 BPM2 BPM1 BPM0
+.outputs NUMB7 NUMB6 NUMB5 NUMB4 NUMB3 NUMB2 NUMB1 NUMB0 SA1 SA0
+#introduco nel datapath le costanti 0,1,160,180
+.subckt zero8 O7=Z7 O6=Z6 O5=Z5 O4=Z4 O3=Z3 O2=Z2 O1=Z1 O0=Z0
+.subckt uno8 O7=U7 O6=U6 O5=U5 O4=U4 O3=U3 O2=U2 O1=U1 O0=U0
+.subckt centosessanta8 O7=C7 O6=C6 O5=C5 O4=C4 O3=C3 O2=C2 O1=C1 O0=C0
+.subckt centoottanta8 O7=C17 O6=C16 O5=C15 O4=C14 O3=C13 O2=C12 O1=C11 O0=C10
+#confronto BPM=0
+.subckt uguale8 A7=BPM7 A6=BPM6 A5=BPM5 A4=BPM4 A3=BPM3 A2=BPM2 A1=BPM1 A0=BPM0 B7=Z7 B6=Z6 B5=Z5 B4=Z4 B3=Z3 B2=Z2 B1=Z1 B0=Z0 O=ZO
+#confronto BPM>160
+.subckt 8_gt A7=BPM7 A6=BPM6 A5=BPM5 A4=BPM4 A3=BPM3 A2=BPM2 A1=BPM1 A0=BPM0 B7=C7 B6=C6 B5=C5 B4=C4 B3=C3 B2=C2 B1=C1 B0=C0 O=CO
+#confronto BPM>180
+.subckt 8_gt A7=BPM7 A6=BPM6 A5=BPM5 A4=BPM4 A3=BPM3 A2=BPM2 A1=BPM1 A0=BPM0 B7=C17 B6=C16 B5=C15 B4=C14 B3=C13 B2=C12 B1=C11 B0=C10 O=C1O
+
+#PRIMO AND
+.subckt not A=ZO O=NOTU
+.subckt not A=CO O=NOTGT
+.subckt and A1=NOTU A0=NOTGT O=OA1
+#SECONDO AND
+.subckt and A1=NOTU A0=C1O O=OA2
+#Terzo AND
+.subckt and A1=NOTU A0=C1O O=OA3
+#QUARTO AND
+.subckt and A1=NOTU A0=CO O=OA4
+
+#PRIMO OR
+.subckt or A1=OA1 A0=OA2 O=SA0
+#SECONDO OR
+.subckt or A1=OA3 A0=OA4 O=SA1
+
+
+#seconda parte datapath
+
+.names ZERO
+#mux
+.subckt mux8 A7=OS7 A6=OS6 A5=OS5 A4=OS4 A3=OS3 A2=OS2 A1=OS1 A0=OS0 B7=Z7 B6=Z6 B5=Z5 B4=Z4 B3=Z3 B2=Z2 B1=Z1 B0=Z0 S=START O7=OM7 O6=OM6 O5=OM5 O4=OM4 O3=OM3 O2=OM2 O1=OM1 O0=OM0
+#registro
+.subckt reg8 A7=OM7 A6=OM6 A5=OM5 A4=OM4 A3=OM3 A2=OM2 A1=OM1 A0=OM0 O7=NUMB7 O6=NUMB6 O5=NUMB5 O4=NUMB4 O3=NUMB3 O2=NUMB2 O1=NUMB1 O0=NUMB0
+#sommatore
+.subckt sommatore8 A7=U7 A6=U6 A5=U5 A4=U4 A3=U3 A2=U2 A1=U1 A0=U0 B7=NUMB7 B6=NUMB6 B5=NUMB5 B4=NUMB4 B3=NUMB3 B2=NUMB2 B1=NUMB1 B0=NUMB0 cin=ZERO O7=OS7 O6=OS6 O5=OS5 O4=OS4 O3=OS3 O2=OS2 O1=OS1 O0=OS0 cout=cout
+
+
+
+
+
+.search zero8.blif
+.search uguale8.blif
+.search centosessanta8.blif
+.search 8_gt.blif
+.search centoottanta.blif
+.search not.blif
+.search and.blif
+.search or.blif
+.search uno8.blif
+.search mux8.blif
+.search sommatore8.blif
+.search reg8.blif 
+.end
+

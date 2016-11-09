@@ -1,0 +1,49 @@
+.model fsm
+.inputs INIT RESET SA0 SA1
+.outputs SOGLIA1 SOGLIA2 START
+
+.start_kiss
+.i 4
+.o 3
+.s 5
+.p 26
+.r ON
+
+0--- OFF OFF --0
+1--- OFF ON  000
+0--- ON OFF --0
+1001 ON	SO 011
+1010 ON IS 101
+1011 ON OS 111
+1-00 ON ON 000
+11-- ON ON 000
+1-00 IS ON 000
+11-- IS ON 000
+1010 IS IS 101
+1001 IS SO 010
+1011 IS OS 110
+0--- IS OFF --0
+1-00 SO ON 000
+11-- SO ON 000
+1010 SO IS 100
+1001 SO SO 011
+1011 SO OS 110
+0--- SO OFF --0
+11-- OS ON 000
+1-00 OS ON 000
+1010 OS IS 100
+1001 OS SO 010
+1011 OS OS 111
+0--- OS OFF --0
+
+.end_kiss
+.code OFF 000
+.code ON 001
+.code IS 010
+.code OS 011
+.code SO 100
+
+
+.end
+
+
